@@ -91,7 +91,12 @@ class Car {
 
   drive(distance) {
     this.odometer += distance;
-    // this.tank --;
+    this.tank --;
+
+    // if(this.tank <= 0) {
+    //   this.tank = 0;
+    //   // return `I ran out of fuel at ${this.odometer}`
+    // }
 
   }
 
@@ -110,8 +115,17 @@ class Car {
         + {name} and {location} of course come from the instance's own properties.
 */
 class Lambdasian {
+  constructor(attr) {
+    this.name = attr.name;
+    this.age = attr.age;
+    this.location = attr.location
+  }
+  speak() {
+    return `Hello my name is ${this.name}, I am from ${this.location}`
+  }
 
 }
+
 
 /*
   TASK 4
@@ -127,7 +141,20 @@ class Lambdasian {
         + `demo` receives a `subject` string as an argument and returns the phrase 'Today we are learning about {subject}' where subject is the param passed in.
         + `grade` receives a `student` object and a `subject` string as arguments and returns '{student.name} receives a perfect score on {subject}'
 */
-class Instructor {
+class Instructor extends Lambdasian {
+  constructor(instruct) {
+    super(instruct);
+    this.specialty = instruct.specialty;
+    this.favLanguage = instruct.favLanguage;
+    this.catchPhrase = instruct.catchPhrase;
+  }
+
+  demo(subject) {
+    return `Today we are learning about ${subject}`
+  }
+  grade(student, subject) {
+    return `${student.name} receives a perfect score on ${subject}`
+  }
 
 }
 
